@@ -15,8 +15,11 @@ process.maxEvents = cms.untracked.PSet(
 
 process.source = cms.Source("PoolSource",
     fileNames = cms.untracked.vstring(
-#'/store/data/Run2022F/ScoutingPFRun3/RAW/v1/000/361/303/00000/37f1ab1d-94f9-4177-91e5-db46490bc69a.root'
-'/store/data/Run2022F/ScoutingPFRun3/RAW/v1/000/362/167/00000/bfafc181-f546-4f07-8a99-d56c3890e4a5.root'
+        #'/store/data/Run2018D/ScoutingCaloMuon/RAW/v1/000/320/570/00000/F2AC3A45-9494-E811-9CD1-FA163E390D83.root'
+        #'/store/data/Run2022F/ScoutingPFRun3/RAW/v1/000/362/167/00000/bfafc181-f546-4f07-8a99-d56c3890e4a5.root',
+        '/store/data/Run2022F/ScoutingPFRun3/RAW/v1/000/361/303/00000/37f1ab1d-94f9-4177-91e5-db46490bc69a.root',
+        #'/store/data/Run2022F/ScoutingPFRun3/RAW/v1/000/362/091/00000/839020c4-51a8-4c21-a6d0-5b73bf0cbe14.root',
+        #'/store/data/Run2022F/ScoutingPFRun3/RAW/v1/000/362/091/00000/82a8207c-b475-4f93-9290-6ef1e84b42c4.root'
  )
 )
 
@@ -26,7 +29,7 @@ process.load("EventFilter.L1TRawToDigi.gtStage2Digis_cfi")
 process.gtStage2Digis.InputLabel = cms.InputTag( "hltFEDSelectorL1" )
 
 process.TFileService = cms.Service("TFileService", 
-    fileName = cms.string("scout.root")
+    fileName = cms.string("scoutRun3.root")
 )
 
 #process.ScoutingFilterPath = cms.Path(process.scoutingFilter)

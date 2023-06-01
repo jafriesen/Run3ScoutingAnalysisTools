@@ -88,6 +88,16 @@ private:
   TTree* tree;
   bool muonID1;
   bool muonID2;
+
+  float trackIso1;
+  float trackIso2;
+  int nValidPixelHits1;
+  int nValidPixelHits2;
+  int nTrackerLayersWithMeasurement1;
+  int nTrackerLayersWithMeasurement2;
+  float trk_chi21;
+  float trk_chi22;
+
   float mass;
   float pt;
   float dr;
@@ -213,6 +223,15 @@ void ScoutingTreeMakerRun2::analyze(const edm::Event& iEvent, const edm::EventSe
       muonID1 = (muonsH->at(idx[0]).pt()>4) && (muonsH->at(idx[0]).trackIso()<0.15) && (muonsH->at(idx[0]).nValidPixelHits()>0) && (muonsH->at(idx[0]).chi2()<10);
       muonID2 = (muonsH->at(idx[1]).pt()>4) && (muonsH->at(idx[1]).trackIso()<0.15) && (muonsH->at(idx[1]).nValidPixelHits()>0) && (muonsH->at(idx[1]).chi2()<10);
 
+      trackIso1 = muonsH->at(idx[0]).trackIso();
+      trackIso2 = muonsH->at(idx[1]).trackIso();   
+      nValidPixelHits1 = muonsH->at(idx[0]).nValidPixelHits();
+      nValidPixelHits2 = muonsH->at(idx[1]).nValidPixelHits();
+      nTrackerLayersWithMeasurement1 = muonsH->at(idx[0]).nTrackerLayersWithMeasurement();
+      nTrackerLayersWithMeasurement2 = muonsH->at(idx[1]).nTrackerLayersWithMeasurement();
+      trk_chi21 = muonsH->at(idx[0]).chi2();
+      trk_chi22 = muonsH->at(idx[1]).chi2();
+
       pt1=muonsH->at(idx[0]).pt();
       pt2=muonsH->at(idx[1]).pt();
 
@@ -314,6 +333,16 @@ void ScoutingTreeMakerRun2::beginJob() {
     tree = fs->make<TTree>("tree"      , "tree");
     tree->Branch("muonID1"             , &muonID1                     , "muonID1/B" );
     tree->Branch("muonID2"             , &muonID2                     , "muonID2/B" );
+
+    tree->Branch("trackIso1", &trackIso1, "trackIso1/F");
+    tree->Branch("trackIso2", &trackIso2, "trackIso2/F");
+    tree->Branch("nValidPixelHits1", &nValidPixelHits1, "nValidPixelHits1/I");
+    tree->Branch("nValidPixelHits2", &nValidPixelHits2, "nValidPixelHits2/I");
+    tree->Branch("nTrackerLayersWithMeasurement1", &nTrackerLayersWithMeasurement1, "nTrackerLayersWithMeasurement1/I");
+    tree->Branch("nTrackerLayersWithMeasurement2", &nTrackerLayersWithMeasurement2, "nTrackerLayersWithMeasurement2/I");
+    tree->Branch("trk_chi21", &trk_chi21, "trk_chi21/F");
+    tree->Branch("trk_chi22", &trk_chi22, "trk_chi22/F");
+
     tree->Branch("mass"                , &mass                        , "mass/F"    );
     tree->Branch("pt"                  , &pt                          , "pt/F"      );
     tree->Branch("dr"                  , &dr                          , "dr/F"      );

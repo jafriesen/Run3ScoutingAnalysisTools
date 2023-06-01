@@ -46,10 +46,19 @@ def fillHistogram():
 
 	print(opt.INPUT)
 	listDir = "/afs/cern.ch/user/j/jfriesen/CMSSW_12_4_2/src/Run3ScoutingAnalysisTools/FillHistogram"
-	if ( opt.RUN == "run2" ) : 
+	if ( opt.RUN == "run2" ) :
 		files = [ (opt.INPUT + "/000" + str(folder) + "/" + line) for folder in range(2) for line in open(listDir+"/list000" + str(folder) + "run2.txt","r") ]
+		l1condition = "(l1Result[0] > 0 || l1Result[1] > 0 || l1Result[2] > 0 || l1Result[3] > 0)"
 	else :
 		files = [ (opt.INPUT + "/000" + str(folder) + "/" + line) for folder in range(6) for line in open(listDir+"/list000" + str(folder) + ".txt","r") ]
+		l1condition = "(l1Result[0] > 0 || l1Result[1] > 0 || l1Result[2] > 0 || l1Result[3] > 0 || l1Result[4] > 0 || l1Result[5] > 0)"
+
+	condition = l1condition if (opt.CONDITION == "l1") else ""
+	vtxSelection = "vtxMatch==1 && vtxXError < 0.05 && vtxYError < 0.05 && vtxZError < 0.10 && vtxChi2/vtxNdof < 5"
+	if (opt.CONDITION == "lxy20"): condition = "Lxy > 20 && " + vtxSelection
+	if (opt.CONDITION == "lxy11to20"): condition = "Lxy > 11 && Lxy < 20 && " + vtxSelection
+	if (opt.CONDITION == "lxy7to11"): condition = "Lxy > 7 && Lxy < 11 && " + vtxSelection
+
 	N = len(files)
 
 	first = int(float(N)/float(opt.NJOBS)*float(opt.JOB-1))
@@ -69,10 +78,10 @@ def fillHistogram():
 	mu_mass = 105.658/1000;
 	nbins = 1500
 	bin_edges = [0] + [mu_mass*(1.01)**i for i in range(nbins+1)]
-	h = TH1F("h_mass","h_mass",bins,array('d',bin_edges))
+	h = TH1F("h_mass","h_mass",nbins,array('d',bin_edges))
 	
 	print("drawing ")
-	t.Draw("mass>>h_mass")
+	t.Draw("mass>>h_mass", condition)
 	print("saving as "+str(opt.OUTPUT)+str(opt.JOB)+".root")
 	h.SaveAs(str(opt.OUTPUT)+str(opt.JOB)+".root")
 

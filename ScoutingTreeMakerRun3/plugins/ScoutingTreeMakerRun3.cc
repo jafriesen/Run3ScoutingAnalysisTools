@@ -370,7 +370,7 @@ void ScoutingTreeMakerRun3::beginJob() {
 
     tree->Branch("trackIso1", &trackIso1, "trackIso1/F");
     tree->Branch("trackIso2", &trackIso2, "trackIso2/F");
-    tree->Branch("nValidPixelHits1", &nValidPixelHits1, "nValidPixelHits2/I");
+    tree->Branch("nValidPixelHits1", &nValidPixelHits1, "nValidPixelHits1/I");
     tree->Branch("nValidPixelHits2", &nValidPixelHits2, "nValidPixelHits2/I");
     tree->Branch("nTrackerLayersWithMeasurement1", &nTrackerLayersWithMeasurement1, "nTrackerLayersWithMeasurement1/I");
     tree->Branch("nTrackerLayersWithMeasurement2", &nTrackerLayersWithMeasurement2, "nTrackerLayersWithMeasurement2/I");

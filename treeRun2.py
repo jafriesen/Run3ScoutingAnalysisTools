@@ -16,7 +16,7 @@ process.maxEvents = cms.untracked.PSet(
 process.source = cms.Source("PoolSource",
     fileNames = cms.untracked.vstring(
         #'/store/data/Run2018D/ScoutingCaloMuon/RAW/v1/000/320/570/00000/F2AC3A45-9494-E811-9CD1-FA163E390D83.root'
-        #'/store/data/Run2018D/ScoutingCaloMuon/RAW/v1/000/325/101/00000/1EDC0B34-D167-DB4E-81DA-EDDF7C3F0CF6.root',
+        '/store/data/Run2018D/ScoutingCaloMuon/RAW/v1/000/325/101/00000/1EDC0B34-D167-DB4E-81DA-EDDF7C3F0CF6.root',
         #'/store/data/Run2018D/ScoutingCaloMuon/RAW/v1/000/325/101/00000/A9352733-3357-2D4F-8294-24D40CC3B427.root',
         #'/store/data/Run2018D/ScoutingCaloMuon/RAW/v1/000/325/101/00000/922DD2E9-5732-084D-B342-3689EBC66AF7.root',
         #'/store/data/Run2018D/ScoutingCaloMuon/RAW/v1/000/325/022/00000/3EBD7023-C3D9-EF4C-8662-B54DC1755181.root',
@@ -25,7 +25,7 @@ process.source = cms.Source("PoolSource",
         #'/store/data/Run2018D/ScoutingCaloMuon/RAW/v1/000/325/101/00000/F4FA257A-30F2-F544-BDE9-5567BA47CA53.root',
         #'/store/data/Run2018D/ScoutingCaloMuon/RAW/v1/000/325/101/00000/52D96D18-1703-2246-A56D-660A039BF2DB.root',
         #'/store/data/Run2018D/ScoutingCaloMuon/RAW/v1/000/325/101/00000/D278F2B4-73B9-5348-8571-173169B30909.root',
-        '/store/data/Run2018D/ScoutingCaloMuon/RAW/v1/000/320/570/00000/F2AC3A45-9494-E811-9CD1-FA163E390D83.root'
+        #'/store/data/Run2018D/ScoutingCaloMuon/RAW/v1/000/320/570/00000/F2AC3A45-9494-E811-9CD1-FA163E390D83.root'
     )
 )
 
