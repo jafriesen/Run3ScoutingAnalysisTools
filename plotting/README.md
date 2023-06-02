@@ -1,7 +1,6 @@
 
 Use gfal-ls to create input lists:
-'''
-gfal-ls 'davs://xrootd.cmsaf.mit.edu:1094/store/user/jfriesen/ScoutingCaloMuon/scoutingTreeRun2_23May2023/230523_224825/0000'>list0000.txt
+'''gfal-ls 'davs://xrootd.cmsaf.mit.edu:1094/store/user/jfriesen/ScoutingCaloMuon/scoutingTreeRun2_23May2023/230523_224825/0000'>list0000.txt
 gfal-ls 'davs://xrootd.cmsaf.mit.edu:1094/store/user/jfriesen/ScoutingCaloMuon/scoutingTreeRun2_23May2023/230523_224825/0001'>list0001.txt
 '''
 Use submitFillHistogram.py to create Lxy histograms:
